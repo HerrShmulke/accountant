@@ -1,4 +1,6 @@
 <template>
+  <Teleport to="#title">Баланс</Teleport>
+
   <VCardList>
     <VCard>
       <h2 class="text-body-1 mb-1">Потрачено</h2>
@@ -39,15 +41,6 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import { TITLE } from '../constants/common';
-
-const router = useRouter();
-const route = useRoute();
-
-if (!route.params.title) {
-  router.replace({ params: { title: TITLE } });
-}
 
 const spent = $ref(0);
 const recommendedSpending = $ref(1120);

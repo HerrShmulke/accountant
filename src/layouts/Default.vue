@@ -2,7 +2,7 @@
   <div class="default-layout">
     <TheBackground />
     <div class="default-layout__container">
-      <h1 class="default-layout__title mb-8">{{ currentTitle }}</h1>
+      <h1 class="default-layout__title mb-8 text-h4" id="title"></h1>
       <RouterView />
     </div>
 
@@ -11,17 +11,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
-
 // Components
 import TheBackground from '@/components/TheBackground.vue';
 import TheNavigation from '@/components/TheNavigation.vue';
-
-const route = useRoute();
-const currentTitle = computed(() => {
-  return route.params.title || '';
-});
 </script>
 
 <style lang="scss">
@@ -31,6 +23,7 @@ const currentTitle = computed(() => {
     padding-right: 20px;
     padding-top: 20px;
     padding-bottom: 120px;
+    min-height: 100vh;
   }
 
   &__title {
