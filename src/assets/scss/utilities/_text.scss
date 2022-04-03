@@ -1,0 +1,41 @@
+.text-h1 {
+  font-size: 40px;
+}
+
+.text-h2 {
+  font-size: 32px;
+}
+
+.text-h3 {
+  font-size: 28px;
+}
+
+.text-h4 {
+  font-size: 24px;
+}
+
+.text-h5 {
+  font-size: 20px;
+}
+
+.text-body-1 {
+  font-size: 16px;
+}
+
+.text-subtitle-1 {
+  font-size: 14px;
+}
+
+.text-secondary {
+  opacity: 0.5;
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+@each $name, $value in map-get($--theme, 'primary') {
+  .text-color-primary-#{$name} {
+    color: $value;
+  }
+}
