@@ -1,4 +1,5 @@
 import { BALANCE, HOME } from './constants/routes';
+import { TITLE } from './constants/common';
 
 /** @type {import('vue-router').RouteRecordRaw} */
 const route = {
@@ -9,9 +10,9 @@ const route = {
     layout: 'default',
     navigation: {
       iconName: 'wallet',
-      text: 'Баланс',
+      text: TITLE,
       params: {
-        title: 'Баланс',
+        title: TITLE,
       },
     },
   },

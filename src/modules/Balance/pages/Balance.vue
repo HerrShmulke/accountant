@@ -41,12 +41,13 @@
 import lodash from 'lodash';
 import { computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { TITLE } from '../constants/common';
 
 const router = useRouter();
 const route = useRoute();
 
 if (!route.params.title) {
-  router.replace({ params: { title: 'Баланс' } });
+  router.replace({ params: { title: TITLE } });
 }
 
 const spent = $ref(0);
@@ -62,7 +63,6 @@ const spentColor = computed(() => {
   const step = 1.46;
 
   const value = x * step + 214;
-  console.log(value, x);
 
   return `hsl(${lodash.clamp(value, 214, 360)}, 53%, 59%, 1)`;
 });
