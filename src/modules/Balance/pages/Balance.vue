@@ -38,7 +38,6 @@
 </template>
 
 <script setup>
-import lodash from 'lodash';
 import { computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { TITLE } from '../constants/common';
@@ -64,6 +63,6 @@ const spentColor = computed(() => {
 
   const value = x * step + 214;
 
-  return `hsl(${lodash.clamp(value, 214, 360)}, 53%, 59%, 1)`;
+  return `hsl(${value}, 53%, 59%, 1)`;
 });
 </script>
