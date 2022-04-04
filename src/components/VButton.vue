@@ -1,10 +1,18 @@
 <template>
-  <button class="v-button" type="button" v-bind="$attrs">
+  <button class="v-button" :class="{ 'v-button--icon': icon }" type="button" v-bind="$attrs">
     <div class="v-button__content">
       <slot />
     </div>
   </button>
 </template>
+
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  icon: { type: Boolean, default: false },
+});
+</script>
 
 <style lang="scss">
 .v-button {
@@ -17,5 +25,16 @@
   color: map-get($--theme, 'grey', '50');
   border: none;
   border-radius: 8px;
+
+  &__content {
+    display: flex;
+  }
+
+  &--icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    padding: 0;
+  }
 }
 </style>
