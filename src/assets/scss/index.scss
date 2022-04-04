@@ -13,6 +13,13 @@ body {
     'Helvetica Neue', sans-serif;
 }
 
+html.hide-scroll {
+  position: fixed;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3,
