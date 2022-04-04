@@ -39,3 +39,7 @@
     color: $value;
   }
 }
+
+.text-color-white {
+  color: map-get($--theme, 'white');
+}
