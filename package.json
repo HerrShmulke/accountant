@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "focus-trap": "^6.7.3",
+    "focus-trap-vue": "^3.2.1",
     "idb-keyval": "^6.1.0",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.25",
