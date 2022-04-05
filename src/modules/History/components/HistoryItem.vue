@@ -1,5 +1,5 @@
 <template>
-  <ImageViewer v-if="image" v-model="viewerIsOpen" :src="image" :name="name" />
+  <ImageViewer v-if="image" v-model="viewerIsOpen" :src="image" :name="name"  />
 
   <VCard class="history-item" v-bind="$attrs">
     <div class="history-item__content">
