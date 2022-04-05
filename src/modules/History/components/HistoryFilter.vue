@@ -1,11 +1,14 @@
 <template>
-  <button class="history-filter font-weight-medium" @click="onClick">
+  <button
+    class="history-filter font-weight-medium"
+    @click="onClick"
+  >
     {{ nextFilter }}
   </button>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, computed } from 'vue';
 
 const filters = [
   { text: 'м', value: 'month' },
@@ -25,7 +28,7 @@ function getNextFilter() {
   return filters[(currentIndex + 1) % filters.length];
 }
 
-const nextFilter = $computed(() => {
+const nextFilter = computed(() => {
   return getNextFilter().text;
 });
 

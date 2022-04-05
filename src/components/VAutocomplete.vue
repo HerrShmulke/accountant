@@ -1,9 +1,19 @@
 <template>
   <div class="v-autocomplete">
-    <VInput v-model="search" @focus="onFocus" @blur="onBlur" v-bind="$attrs" />
+    <VInput
+      v-model="search"
+      v-bind="$attrs"
+      @focus="onFocus"
+      @blur="onBlur"
+    />
 
     <FadeTransition>
-      <ul v-if="dropDownIsOpen" class="v-autocomplete__menu" role="listbox" tabindex="-1">
+      <ul
+        v-if="dropDownIsOpen"
+        class="v-autocomplete__menu"
+        role="listbox"
+        tabindex="-1"
+      >
         <template v-if="hasOptions">
           <li
             v-for="(option, index) in filteredOptions"
@@ -16,7 +26,10 @@
             {{ getOptionText(option) }}
           </li>
         </template>
-        <li v-else class="v-autocomplete__no-option">
+        <li
+          v-else
+          class="v-autocomplete__no-option"
+        >
           {{ noOptionText }}
         </li>
       </ul>
@@ -25,7 +38,7 @@
 </template>
 
 <script setup>
-import { defineProps, watch, defineEmits } from 'vue';
+import { defineProps, watch, defineEmits, computed, reactive, ref } from 'vue';
 import VInput from '@/components/VInput.vue';
 import FadeTransition from '@/components/transitions/Fade.vue';
 
@@ -39,10 +52,10 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue']);
 
-let search = $ref(props.modelValue || '');
+let search = ref(props.modelValue || '');
 
 watch(
-  () => search,
+  () => search.value,
   (value) => {
     emit('update:modelValue', value);
   }
@@ -71,22 +84,22 @@ function filter(options, search) {
   });
 }
 
-const filteredOptions = $computed(() => {
+const filteredOptions = computed(() => {
   return search && !props.disableFilter ? filter(props.options, search) : props.options;
 });
 
-const hasOptions = $computed(() => {
-  return filteredOptions.length > 0;
+const hasOptions = computed(() => {
+  return filteredOptions.value.length > 0;
 });
 
-let dropDownIsOpen = $ref(false);
+let dropDownIsOpen = ref(false);
 
 function onFocus() {
-  dropDownIsOpen = true;
+  dropDownIsOpen.value = true;
 }
 
 function onBlur() {
-  dropDownIsOpen = false;
+  dropDownIsOpen.value = false;
 }
 
 function select(option) {

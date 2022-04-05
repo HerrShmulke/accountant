@@ -7,15 +7,18 @@
       active-class="the-navigation__link--active"
       :to="route.to"
     >
-      <VIcon :name="route.iconName" class="mb-1" />
+      <VIcon
+        :name="route.iconName"
+        class="mb-1"
+      />
       <div>{{ route.text }}</div>
     </RouterLink>
   </nav>
 </template>
 
 <script setup>
-import { computed, watch } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 import VIcon from '@/components/VIcon.vue';
 
 const router = useRouter();

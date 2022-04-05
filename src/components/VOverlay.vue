@@ -1,6 +1,9 @@
 <template>
   <Teleport to="body">
-    <FocusTrap :active="modelValue" :initial-focus="() => $refs.overlay.focus()">
+    <FocusTrap
+      :active="modelValue"
+      :initial-focus="() => $refs.overlay.focus()"
+    >
       <div>
         <div
           v-if="modelValue"
@@ -9,10 +12,13 @@
           role="button"
           tabindex="0"
           aria-label="Закрыть модальное окно"
-          @click="close"
           v-bind="$attrs"
+          @click="close"
         >
-          <div @click.stop="" :class="contentClasses">
+          <div
+            :class="contentClasses"
+            @click.stop=""
+          >
             <slot />
           </div>
         </div>

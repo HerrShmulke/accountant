@@ -2,7 +2,10 @@
   <div class="default-layout">
     <TheBackground />
     <div class="default-layout__container">
-      <h1 class="default-layout__title mb-8 text-h4" id="title"></h1>
+      <h1
+        id="title"
+        class="default-layout__title mb-8 text-h4"
+      />
       <RouterView />
     </div>
 

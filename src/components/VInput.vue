@@ -1,5 +1,9 @@
 <template>
-  <input v-model="model" class="v-input" v-bind="$attrs" />
+  <input
+    v-model="model"
+    class="v-input"
+    v-bind="$attrs"
+  >
 </template>
 
 <script setup>

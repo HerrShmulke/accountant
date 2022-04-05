@@ -1,18 +1,30 @@
 <template>
   <label class="file-input">
-    <input class="file-input__field" type="file" accept="image/*" capture @change="onChange" />
-    <img v-if="currentFileUrl" class="file-input__image" :src="currentFileUrl" alt="" />
+    <input
+      class="file-input__field"
+      type="file"
+      accept="image/*"
+      capture
+      @change="onChange"
+    >
+    <img
+      v-if="currentFileUrl"
+      class="file-input__image"
+      :src="currentFileUrl"
+      alt=""
+    >
     <span v-else>Добавить фото</span>
   </label>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 const reader = new FileReader();
 
-let currentFileUrl = $ref(null);
+let currentFileUrl = ref('');
 
 reader.addEventListener('loadend', () => {
-  currentFileUrl = reader.result;
+  currentFileUrl.value = reader.result;
 });
 
 function onChange(event) {

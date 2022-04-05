@@ -1,11 +1,21 @@
 <template>
-  <Teleport to="#title">Добавить</Teleport>
+  <Teleport to="#title">
+    Добавить
+  </Teleport>
 
   <VCard>
-    <VAutocomplete placeholder="Назначение траты" :options="['foo', 'bar', 'baz']" />
-    <VInput placeholder="Сумма" class="mt-2" />
+    <VAutocomplete
+      placeholder="Назначение траты"
+      :options="['foo', 'bar', 'baz']"
+    />
+    <VInput
+      placeholder="Сумма"
+      class="mt-2"
+    />
     <FileInput class="mt-4" />
-    <VButton class="mt-4">Добавить</VButton>
+    <VButton class="mt-4">
+      Добавить
+    </VButton>
   </VCard>
 </template>
 

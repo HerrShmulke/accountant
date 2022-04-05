@@ -28,10 +28,10 @@ import HistoryItem from '../components/HistoryItem.vue';
 const $router = useRouter();
 const $route = useRoute();
 
-const filter = $ref($route.query.filter || 'month');
+const filter = ref($route.query.filter || 'month');
 
 watch(
-  () => filter,
+  () => filter.value,
   (value) => {
     const query = $route.query;
 
@@ -46,7 +46,7 @@ const filterText = {
 };
 
 const periodText = computed(() => {
-  return filterText[filter];
+  return filterText[filter.value];
 });
 
 let historyItems = ref([

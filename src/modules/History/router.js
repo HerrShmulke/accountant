@@ -1,5 +1,4 @@
 import { HISTORY } from './constants/routes';
-import { TITLE } from './constants/common';
 
 /** @type {import('vue-router').RouteRecordRaw} */
 const route = {

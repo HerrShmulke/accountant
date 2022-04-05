@@ -1,5 +1,10 @@
 <template>
-  <button class="v-button" :class="{ 'v-button--icon': icon }" type="button" v-bind="$attrs">
+  <button
+    class="v-button"
+    :class="{ 'v-button--icon': icon }"
+    type="button"
+    v-bind="$attrs"
+  >
     <div class="v-button__content">
       <slot />
     </div>

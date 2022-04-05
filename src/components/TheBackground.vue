@@ -1,6 +1,6 @@
 <template>
   <svg class="the-background" width="100%" height="200" viewBox="0 0 320 200" preserveAspectRatio="none">
-    <path d="M0,0 L320,0 320,120Q160,200 0,120" :fill="color"></path>
+    <path d="M0,0 L320,0 320,120Q160,200 0,120" :fill="color" />
   </svg>
 </template>
 

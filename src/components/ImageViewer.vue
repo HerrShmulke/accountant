@@ -4,7 +4,9 @@
     class="d-flex align-center justify-center image-viewer"
     content-classes="d-flex align-center flex-column"
   >
-    <div class="mb-4 font-weight-medium text-h4 text-color-white">{{ name }}</div>
+    <div class="mb-4 font-weight-medium text-h4 text-color-white">
+      {{ name }}
+    </div>
     <img class="image-viewer__image" :src="src" alt="" />
   </VOverlay>
 </template>
