@@ -9,6 +9,7 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src"
   },
   "dependencies": {
+    "dexie": "^3.2.1",
     "focus-trap": "^6.7.3",
     "focus-trap-vue": "^3.2.1",
     "idb-keyval": "^6.1.0",
