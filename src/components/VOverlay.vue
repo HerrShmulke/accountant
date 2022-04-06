@@ -1,9 +1,6 @@
 <template>
   <Teleport to="body">
-    <FocusTrap
-      :active="modelValue"
-      :initial-focus="() => $refs.overlay.focus()"
-    >
+    <FocusTrap :active="modelValue" :initial-focus="() => $refs.overlay.focus()">
       <div>
         <div
           v-if="modelValue"
@@ -15,10 +12,7 @@
           v-bind="$attrs"
           @click="close"
         >
-          <div
-            :class="contentClasses"
-            @click.stop=""
-          >
+          <div :class="contentClasses" @click.stop="">
             <slot />
           </div>
         </div>
@@ -34,7 +28,7 @@ export default {
 </script>
 
 <script setup>
-import { defineProps, defineEmits, watch, useAttrs } from 'vue';
+import { defineProps, defineEmits, watch } from 'vue';
 import { hideScroll, showScroll } from '@/utils/scroll';
 import { FocusTrap } from 'focus-trap-vue';
 
