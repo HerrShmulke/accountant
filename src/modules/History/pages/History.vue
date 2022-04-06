@@ -12,7 +12,7 @@
       v-for="item in historyItems"
       :key="item.id"
       :name="item.name"
-      :price="item.price"
+      :price="item.amount"
       :image="item.image"
       @remove="removeItem(item.id)"
     />
@@ -22,6 +22,11 @@
 <script setup>
 import { computed, watch, ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+
+// Services
+import { getAllExpenses } from '@/services/balance';
+
+// Components
 import HistoryFilter from '../components/HistoryFilter.vue';
 import HistoryItem from '../components/HistoryItem.vue';
 
@@ -49,25 +54,14 @@ const periodText = computed(() => {
   return filterText[filter.value];
 });
 
-let historyItems = ref([
-  {
-    id: 1,
-    name: 'Конфеты',
-    price: '200',
-    image: 'https://blog.vverh.digital/wp-content/uploads/2020/07/%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-1.png',
-  },
-  {
-    id: 2,
-    name: 'Конфеты 2',
-    price: 300,
-    image: 'https://blog.vverh.digital/wp-content/uploads/2020/07/%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-1.png',
-  },
-  {
-    id: 3,
-    name: 'Конфеты 4',
-    price: 600,
-  },
-]);
+let historyItems = ref([]);
+
+getAllExpenses({ limit: 12, offset: 0 }).then((expenses) => {
+  historyItems.value = expenses.map((expense) => ({
+    ...expense,
+    amount: expense.amount.toLocaleString('ru'),
+  }));
+});
 
 function removeItem(itemId) {
   historyItems.value = historyItems.value.filter((historyItem) => historyItem.id !== itemId);
