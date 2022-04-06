@@ -1,19 +1,9 @@
 <template>
   <div class="v-autocomplete">
-    <VInput
-      v-model="search"
-      v-bind="$attrs"
-      @focus="onFocus"
-      @blur="onBlur"
-    />
+    <VInput v-model="search" v-bind="$attrs" @focus="onFocus" @blur="onBlur" />
 
     <FadeTransition>
-      <ul
-        v-if="dropDownIsOpen"
-        class="v-autocomplete__menu"
-        role="listbox"
-        tabindex="-1"
-      >
+      <ul v-if="dropDownIsOpen" class="v-autocomplete__menu" role="listbox" tabindex="-1">
         <template v-if="hasOptions">
           <li
             v-for="(option, index) in filteredOptions"
@@ -26,10 +16,7 @@
             {{ getOptionText(option) }}
           </li>
         </template>
-        <li
-          v-else
-          class="v-autocomplete__no-option"
-        >
+        <li v-else class="v-autocomplete__no-option">
           {{ noOptionText }}
         </li>
       </ul>
@@ -38,7 +25,7 @@
 </template>
 
 <script setup>
-import { defineProps, watch, defineEmits, computed, reactive, ref } from 'vue';
+import { defineProps, watch, defineEmits, computed, ref } from 'vue';
 import VInput from '@/components/VInput.vue';
 import FadeTransition from '@/components/transitions/Fade.vue';
 
@@ -64,7 +51,7 @@ watch(
 watch(
   () => props.modelValue,
   (value) => {
-    search = value;
+    search.value = value;
   }
 );
 
@@ -85,7 +72,7 @@ function filter(options, search) {
 }
 
 const filteredOptions = computed(() => {
-  return search && !props.disableFilter ? filter(props.options, search) : props.options;
+  return search.value && !props.disableFilter ? filter(props.options, search.value) : props.options;
 });
 
 const hasOptions = computed(() => {
@@ -103,7 +90,7 @@ function onBlur() {
 }
 
 function select(option) {
-  search = option;
+  search.value = option;
 }
 </script>
 
@@ -126,6 +113,7 @@ function select(option) {
     border: 1px solid map-get($--theme, 'grey', '100');
     max-height: 90px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
   }
 
   &__no-option {
