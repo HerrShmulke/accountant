@@ -4,6 +4,12 @@
   </Transition>
 </template>
 
+<script>
+export default {
+  name: 'FadeTransition',
+};
+</script>
+
 <style lang="scss">
 .fade {
   &-enter-active,
