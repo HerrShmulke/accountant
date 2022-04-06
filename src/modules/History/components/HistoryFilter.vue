@@ -1,14 +1,11 @@
 <template>
-  <button
-    class="history-filter font-weight-medium"
-    @click="onClick"
-  >
+  <button class="history-filter font-weight-medium" @click="onClick">
     {{ nextFilter }}
   </button>
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue';
+import { defineProps, computed, defineEmits } from 'vue';
 
 const filters = [
   { text: 'м', value: 'month' },
